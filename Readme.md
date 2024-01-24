@@ -256,9 +256,101 @@ Function overloading is a mechanism in C++ to have multiple copies of the same f
 
 ## 25. Lambda Functions
 
+### Declaring and using lambda functions
+
 ![Alt text](image/lambda-functions.jpg)
 
 ```
 A mechanism to set up anonymous functions (without names). Once, they can be given a name and can be called or can be used
 to do things directly.
 ```
+
+### Capture Lists
+
+```
+- If capture Lists is empty, the lambda function can only use the things inside it. So, using capture lists help the
+lambda function can access to things that are declared or defined outside the lambda function.
+- Capture by value is the same with pass by value, a variable inside the lambda function is a copy version of the outside.
+- The outside variable that the lambda function use inside it can not be modified (in case of capture by value).
+```
+
+![Alt text](image/capture-list.jpg)
+
+### Capture all in context
+
+![Alt text](image/capture-everything.jpg)
+
+```
+Use "=" in capture lists to capture everything by value.
+Use "&" in capture lists to capture everything by reference.
+
+```
+
+## 26. Functions: The misfits
+
+### Static variables
+
+```
+Both global and static variables have static storage duration. They live throughout the entire lifetime of the program.
+
+Static variables are scoped to the function in which they are declared and used. Trying to access them outside that
+function will get a compiler error.
+
+Global variables are scoped to the global scope of the file where they are declared. They are accessible and usable
+through out the entire file.
+```
+
+#### Global variables
+
+```
+A global variable is initialized when the program is starting, it's even initialized before the main function runs.
+Its lifetime is going to start when the application starts and it's going to be destroyed when the application is killed.
+```
+
+#### Static variables
+
+![Alt text](image/static-var.jpg)
+
+```
+Static variables is the same with global variables but its scope is going to be limited to the function where it is
+declared. So, can not use static variable outside.
+```
+
+#### Difference between the scope and the lifetime of variables
+
+```
+The scope is within a curly braces in the function where the variable is declared.
+The lifetime of variables is not tied to the curly braces. It's going to live throughout the entire lifetime of application.
+```
+
+### Inline functions
+
+![Alt text](image/inline-func.jpg)
+
+## 28. Function Templates
+
+### Trying out function templates
+
+![Alt text](image/func-template2.jpg)
+
+```
+- Function templates are a mechanism in C++ to avoid code repetition.
+- Compiler will take the function template and this function is going to be replace its type to the type of the parameter that
+is passed into the function. Once, compiler generates the real C++ code about the function after do a replacement.
+- The function templates is forced to use the same type for the return type, all parameter type.
+```
+
+![Alt text](image/func-template.jpg)
+
+![Alt text](image/func-template3.jpg)
+
+### Template type deduction and explicit argument
+
+![Alt text](image/func-template4.jpg)
+
+```
+Template type deduction is a mechanism that the compiler uses to deduce the type it would use to set up the template instance
+from the arguments that is passed to the function call.
+```
+
+### Template parameter by reference
