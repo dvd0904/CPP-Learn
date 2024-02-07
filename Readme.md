@@ -354,3 +354,79 @@ from the arguments that is passed to the function call.
 ```
 
 ### Template parameter by reference
+
+```
+Like pass by reference. Modifying a parameter in template function will reflect the value of the original variable.
+```
+
+### Template specialization
+
+![alt text](image/template_spe.jpg)
+
+```
+
+```
+
+## 30. Class
+
+### C++ Class
+
+![alt text](image/class1.jpg)
+
+```
+Members of class are public by DEFAULT -> can use "public" keyword to public members.
+If the members are private => It will not be usable outside the class, it can only be accessed inside of the class.
+```
+
+![alt text](image/class2.jpg)
+
+### C++ Constructors
+
+```
+Constructors are special kind of method that is called when an instance of a class is created.
+No return type.
+Same name as the class.
+Can have parameters. Can also have empty parameter list.
+Usually used to initialize member variables of a class.
+It must be in the public scope of the class. If it isn't public, it can not be accessed from the outside.
+If a class don't have a constructor, compiler is going to generate an empty constructor. This empty constructor
+is going to take no parameters and it's not going to have anything in the body.
+```
+
+![alt text](image/class3.jpg)
+
+### Default constructor
+
+```
+
+```
+
+### Setters and Getters
+
+```
+Use to read or modify the members variable of a class.
+This functions live in the public scope of a class. 
+```
+
+![alt text](image/class4.jpg)
+
+### Class across multiple file
+
+```
+Eg: Cylinder::volume()
+"::" is called the Scope Resolution Operator. It's telling the compiler that the function called volume() 
+lives in the scope of Cylinder class.
+```
+
+### Arrow pointer call notation
+
+![alt text](image/class5.jpg)
+
+### Destructors
+
+```
+Destructors are special functions or methods of a class that are called by compiler to destroy the object.
+They are called when the object dies and they are needed when the object needs to release some dynamic
+memory or some kind of clean up.
+```
+

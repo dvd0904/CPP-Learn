@@ -1,26 +1,59 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 
-template <typename TEMP> 
-TEMP func(TEMP a, TEMP b)
+#define PI 3.14
+
+class Cylinder
 {
-    return (a > b) ? a : b;
-}
+public:
+    Cylinder() = default;
+    Cylinder(double r_par, double h_par)
+    {
+        r = r_par;
+        h = h_par;
+    }
+
+    double volume()
+    {
+        return PI * r * r * h;
+    }
+
+    /* Getter */
+    double get_radius()
+    {
+        return r;
+    }
+    double get_height()
+    {
+        return h;
+    }
+    /* Setter */
+    void set_radius(double r_par)
+    {
+        r = r_par;
+    }
+    void set_height(double h_par)
+    {
+        h = h_par;
+    }
+
+private:
+    double r, h;
+};
 
 int main()
 {
-    int a = 5, b = 6;
-    double c = 4.6, d = 5.3;
-    std::string e{"dai"}, f{"nguyen"};
-    func(a, b); /* int type deduction */
-    func(c, d); /* double type deduction */
-    func(e, f); /* string type deduction */
+    Cylinder cylinder1(2, 3);
+    std::cout << "base radius: " << cylinder1.get_radius() << "\n";
+    std::cout << "Volume: " << cylinder1.volume() << "\n";
 
-    func<double>(c, d); /* Explicit say that use the double type */
-    func<double>(a, c); /*  a and c are not the same type but it's work. There is an 
-                            implicit conversion from int to double for the first parameter. */
-    func<double>(a, e); /* Error: can not convert std::string to double (second parameter) */
+    cylinder1.set_radius(5);
+    std::cout << "base radius: " << cylinder1.get_radius() << "\n";
+    std::cout << "Volume: " << cylinder1.volume() << "\n";
+
+
+
 
     return 0;
 }
-
