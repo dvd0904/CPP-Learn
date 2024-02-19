@@ -424,9 +424,67 @@ lives in the scope of Cylinder class.
 
 ### Destructors
 
+![alt text](image/class6.jpg)
+
 ```
 Destructors are special functions or methods of a class that are called by compiler to destroy the object.
 They are called when the object dies and they are needed when the object needs to release some dynamic
 memory or some kind of clean up.
+Destructor is always have no parameters.
 ```
 
+![alt text](image/class9.jpg)
+
+#### NOTE
+```
+BE CAREFUL WHEN PASS A CLASS BY VALUE.
+```
+
+### Constructor and Destructor call order
+
+![alt text](image/class7.jpg)
+
+```
+The Constructor are going to be called in order.
+The Destructor are going to be called in reverse order.
+```
+
+### The "this" pointer
+
+![alt text](image/class8.jpg)
+
+```
+The this keyword used to get the address of the current object for which a specific method or function 
+is being called.
+```
+
+![alt text](image/class10.jpg)
+
+#### Chained calls using pointers
+
+![alt text](image/class11.jpg)
+
+#### Chained calls using reference
+
+![alt text](image/class12.jpg)
+
+### Struct
+
+```
+The other way to create a class is using struct.
+The only difference between struct and classes is that for class, members are going to be private by default.
+With struct, can use "private" keyword to make the members of struct private -> can not access them outside 
+of the struct.
+```
+
+![alt text](image/class13.jpg)
+
+### Size of class object
+
+```
+The size of the class object is going to be the sum of the sizes its member variables. The functions are not
+going to be counted, they are just helper functions that live somewhere in memory but they're not going to be 
+counted in the size of object. 
+```
+
+## 31. Classes, Objects and const
