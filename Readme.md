@@ -488,3 +488,20 @@ counted in the size of object.
 ```
 
 ## 31. Classes, Objects and const
+
+### Const object
+
+```
+A const object means that its member variable can not be changed.
+There is no way to let compiler know what the setters or getters do, do they modify the value of member variable.
+```
+![alt text](image/class14.jpg)
+
+#### What happen if a const object is modified or read through pointers or references?
+
+```
+That's not going to work either.
+```
+
+![alt text](image/class15.jpg)
+
