@@ -505,3 +505,36 @@ That's not going to work either.
 
 ![alt text](image/class15.jpg)
 
+### Const object as function argument
+
+#### Pass by value
+
+```
+
+```
+
+#### Pass by non const reference
+
+```
+
+```
+
+#### Pass by const reference
+
+```
+
+```
+
+#### Pass by pointer (to non const)
+
+```
+
+```
+
+#### Pass by value (to const)
+
+```
+
+```
+
+### Const member function
