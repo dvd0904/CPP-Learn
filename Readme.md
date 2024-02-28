@@ -509,32 +509,52 @@ That's not going to work either.
 
 #### Pass by value
 
-```
-
-```
+![alt text](image/class16.jpg)
 
 #### Pass by non const reference
 
-```
-
-```
+![alt text](image/class17.jpg)
 
 #### Pass by const reference
 
-```
-
-```
+![alt text](image/class18.jpg)
 
 #### Pass by pointer (to non const)
 
-```
-
-```
+![alt text](image/class19.jpg)
 
 #### Pass by value (to const)
 
-```
+![alt text](image/class20.jpg)
 
+#### Summary
+
+```
+- Const object is almost going to be useless:
++ Can not read from it
++ Can not write data to it
 ```
 
 ### Const member function
+
+![alt text](image/class21.jpg)
+
+```
+- A const object can't be modified, this is really clearly. But, it can't be read too because 
+the compiler doesn't know whether the function call modify the const object. So, in order to 
+read data from a const object, we need to tell the compiler that some functions are never going
+to be modifying the const object => Marking these functions as const member function
+```
+
+![alt text](image/class22.jpg)
+
+```
+- It's possible to overload const member function.
+- Inside a const member function, modifying anything will cause compiler error.
+```
+
+### Getters that work as Setters
+
+```
+
+``` 
