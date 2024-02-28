@@ -15,11 +15,19 @@ class Dog
         void set_age(int age);
         void get_name();
 
+        const std::string& dog_info() const;
+
     private:
         std::string dog_name;
         std::string breed;
         int age;
 };
+
+const std::string& Dog::dog_info() const 
+{
+    std::string a = "con me no";
+    return a;
+}
 
 
 Dog::Dog(std::string_view name_param, std::string_view breed_param, int age_param)
@@ -50,51 +58,6 @@ void Dog::set_age(int age)
     this->age = age;
 } 
 
-
-void pass_by_value(Dog dog)
-{
-    dog.set_name("123");
-    dog.get_name();
-}
-
-void pass_by_ref(Dog &dog)
-{
-}
-
-
-void pass_by_pointer_to_non_const(Dog *dog)
-{
-    /* This function here is taking its parameter clearly as a non const and this
-    pointer potentially modify the object -> compiler error */
-}
-
-void pass_by_pointer_to_const(const Dog *dog)
-{
-    /* This is not going to work because trying to modify the const object through 
-    a pointer to const is not allowed */
-    // dog->set_name("Hme");
-    /* Like pass by const reference, the compiler doesn't know the get_name() here 
-    isn't modifying the object through a pointer to const -> compiler error */
-    // dog->get_name();
-}
-
-void pass_by_const_ref(const Dog &dog)
-{
-    /* This is going to work because the compiler know that the get_name() is never
-    going to modify the object. */
-    dog.get_name();
-}
-
-/* Marking the function become the const member function, this is how compiler know that
-this function will never modify the object */
-void Dog::get_name() const
-{
-    std::cout << "Dog Name: " << this->dog_name << std::endl;
-    /* Can't modify anything about the class */
-    this->age++; /* Not work */
-}
-
-/* It's possible to overload member function */
 void Dog::get_name()
 {
     std::cout << "Dog Name: " << this->dog_name << std::endl;
@@ -103,18 +66,10 @@ void Dog::get_name()
 
 int main()
 {
-    Dog dog1("Hmu", "Hme", 2); /* non const object */
-    pass_by_const_ref(dog1);
+    Dog dog1("Hmu", "Hme", 2); 
 
-    /* This function receives a non const reference, so it could potentially be used
-    to modify the parameter that is passed to this function and the compiler is going 
-    to prevent anything from doing this. -> Compiler Error */
-    // pass_by_ref(dog1);
-
-    /* This causes no problem because this const object is passed by value
-    -> the one being used here is a copy -> Do not affect to the original object */
-    // pass_by_value(dog1);
-     
+    const std::string &str_ref = dog1.dog_info();
+    std::cout << str_ref;
 
 
 

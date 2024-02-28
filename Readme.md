@@ -558,3 +558,11 @@ to be modifying the const object => Marking these functions as const member func
 ```
 
 ``` 
+
+### Dangling pointers and references in objects
+
+```
+- A pointer or reference is said to be dangling pointer if it's pointing to or referencing invalid data. 
+- Example: a pointer is pointing to a deleted piece of memory.
+
+```
