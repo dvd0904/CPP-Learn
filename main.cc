@@ -15,20 +15,17 @@ class Dog
         void set_age(int age);
         void get_name();
 
-        const std::string& dog_info() const;
+        const std::string& dangling_ref() const;
+        const int *dangling_pointer() const;
 
     private:
         std::string dog_name;
         std::string breed;
         int age;
+        /* We can not modify anything inside a const member function but if we need to
+        modify something => use mutable */
+        mutable int count;
 };
-
-const std::string& Dog::dog_info() const 
-{
-    std::string a = "con me no";
-    return a;
-}
-
 
 Dog::Dog(std::string_view name_param, std::string_view breed_param, int age_param)
 {
@@ -64,12 +61,47 @@ void Dog::get_name()
     this->age++; /* Work */
 }
 
+const std::string& Dog::dangling_ref() const 
+{
+    std::string ret = "konichiwa";
+    return ret; 
+    /* At this moment, ret is wiped out from memory because it's local stack object and 
+    the reference that is returned here might stay there long after this function is done 
+    executing. So, trying to use this reference somewhere later might cause errors */
+} 
+
+const int * Dog::dangling_pointer() const
+{
+    int a = 10;
+    return &a;
+    /* At this moment, we have a pointer to a variable that is really dead */
+}
+
+struct Point
+{
+    double x;
+    double y;
+};
+
 int main()
 {
-    Dog dog1("Hmu", "Hme", 2); 
 
-    const std::string &str_ref = dog1.dog_info();
-    std::cout << str_ref;
+    Point point1 {1.2, 3.4};
+    /* To use structured bindings, the member variables must be public */
+    auto [a, b] = point1; /* a and b are just copies*/
+
+    /* Capturing a structured binding in a lambda function (only in C++ 20) */
+    auto func = [a]()
+    {
+        std::cout << "Have captured: " << a << std::endl; 
+    };
+    func();
+
+
+
+
+
+
 
 
 

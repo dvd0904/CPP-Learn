@@ -564,5 +564,30 @@ to be modifying the const object => Marking these functions as const member func
 ```
 - A pointer or reference is said to be dangling pointer if it's pointing to or referencing invalid data. 
 - Example: a pointer is pointing to a deleted piece of memory.
+```
+
+#### Dangling reference
+
+![alt text](image/class23.jpg)
+
+#### Dangling pointer
+
+![alt text](image/class24.jpg)
+
+### Zooming in on cost
+
+![alt text](image/class25.jpg)
+
+### Mutable member variable
+
+![alt text](image/class26.jpg)
+
+### Structured Bindings
+
+![alt text](image/class27.jpg)
+
+## 32. Diving deep into Constructors and Initialization
+
+```
 
 ```
