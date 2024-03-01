@@ -588,6 +588,38 @@ to be modifying the const object => Marking these functions as const member func
 
 ## 32. Diving deep into Constructors and Initialization
 
-```
+### Default parameters for constructors
 
 ```
+Like default parameters in JS.
+```
+
+#### NOTE
+
+![alt text](image/class28.jpg)
+
+### Initializer lists for constructors
+
+![alt text](image/class29.jpg)
+
+```
+- Initializer lists avoid unnecessary copies.
+- In some cases, they're the only way to initialize an object.
+```
+
+### Initializer lists vs Member wise copy initialization
+
+![alt text](image/class30.jpg)
+
+### Explicit constructors
+
+![alt text](image/class31.jpg)
+
+### Constructor Delegation
+
+```
+Pending.....
+```
+
+### Copy constructors
+
