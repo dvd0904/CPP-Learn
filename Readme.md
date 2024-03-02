@@ -618,8 +618,29 @@ Like default parameters in JS.
 ### Constructor Delegation
 
 ```
-Pending.....
+Constructor delegation is a concept where one constructor of a class calls another constructor 
+from the same class.
 ```
+
+![alt text](image/class32.jpg)
 
 ### Copy constructors
 
+![alt text](image/class33.jpg)
+
+#### NOTE
+
+![alt text](image/class34.jpg)
+
+```
+- Do not pass by value when implementing a copy constructor, this action will cause endless copy
+constructor call.
+```
+
+#### Implement a copy constructor
+
+![alt text](image/class35.jpg)
+
+#### Solve problem
+
+![alt text](image/class36.jpg)
