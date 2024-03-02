@@ -644,3 +644,34 @@ constructor call.
 #### Solve problem
 
 ![alt text](image/class36.jpg)
+
+
+### Objects stored in arrays are copies
+
+```
+- Putting objects in an array is going to create copies.
+```
+
+![alt text](image/class37.jpg)
+
+#### Prove
+
+![alt text](image/class38.jpg)
+
+### Deep copy and shallow copy
+
+![alt text](image/class39.jpg)
+
+#### Shallow
+
+![alt text](image/class40.jpg)
+
+#### Deep
+
+![alt text](image/class41.jpg)
+
+### Move constructors
+
+```
+
+```

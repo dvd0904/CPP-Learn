@@ -6,16 +6,16 @@
 class Person
 {
     private:
-        std::string last_name{};
         std::string first_name{};
+        std::string last_name{};
         int *age{};
 
     public:
         /* Constructor */
         Person() = default;
-        Person(const std::string &last_name_par, const std::string &first_name_par, int age_par);
-        Person(const std::string &last_name_par, const std::string &first_name_par);
-        Person(const std::string &last_name_par);
+        Person(const std::string &first_name_par, const std::string &last_name_par, int age_par);
+        Person(const std::string &first_name_par, const std::string &last_name_par);
+        Person(const std::string &first_name_par);
 
         /* Copy Constructor*/
         /* Can not set a copy constructor like this (pass by value), because this is going to cause a chain
@@ -48,16 +48,16 @@ Person::~Person()
 	delete age; 
 }
 
-Person::Person(const std::string& last_name)
-	: Person(last_name, "") /* Constructor delegation */
+Person::Person(const std::string& first_name)
+	: Person(first_name, "") /* Constructor delegation */
 {
 }
-Person::Person(const std::string& last_name_param, const std::string& first_name_param)
-	: Person(last_name_param, first_name_param, 0) /* Constructor delegation */
+Person::Person(const std::string &first_name_par, const std::string &last_name_par)
+	: Person(first_name_par, last_name_par, 0) /* Constructor delegation */
 {
 }
-Person::Person(const std::string& last_name_param, const std::string& first_name_param, int age_param)
-	: 	last_name(last_name_param), first_name(first_name_param), age(new int(age_param))
+Person::Person(const std::string& first_name_param, const std::string& last_name_param, int age_param)
+	:   first_name(first_name_param), last_name(last_name_param), age(new int(age_param))
 {
 }
 
@@ -71,13 +71,14 @@ Person::Person(const std::string& last_name_param, const std::string& first_name
 Person::Person(const Person& sourcPerson)
     : Person(sourcPerson.get_first_name(), sourcPerson.get_last_name(), *(sourcPerson.get_age()))
 {
+    std::cout << "Copy constructor called for: " << this->last_name << std::endl;
 }
 
 void Person::print_info()
 {
     std::cout << "Person object at: " << this 
-              << " [ Last name: " << this->last_name
-              << ". First name: " << this->first_name 
+              << " [ First name: " << this->first_name
+              << ". Last name: " << this->last_name 
               << ". Age: " << *(this->age)
               << ". Age Address: " << this->age << " ]" 
               << std::endl;
@@ -85,18 +86,21 @@ void Person::print_info()
 
 int main()
 {   
-
-    /* The member variable "age" is a pointer */
-    Person p1("John", "Snow", 25); 
-    Person p2(p1); /* This line does a wise copy member variable one by one from p1 to p2 by default copy constructor */
-    std::cout << "Before p1 set age.\n";
-    p1.print_info();  /* Age of p1 is 25 */
-    p2.print_info();  /* Age of p2 is 25 */
-    p1.set_age(30); /* Set new age to p1 */
-    std::cout << "After p1 set age.\n";
-    p1.print_info(); /* Age of p1 is 30 */
-    p2.print_info(); /* Age of p1 is 30, this is affected by p1 */
-
+    Person p1("John1", "Snow1", 25); 
+    Person p2("John2", "Snow2", 25); 
+    Person p3("John3", "Snow3", 25); 
+    std::cout << "-------------------\n";
+    p1.print_info();
+    p2.print_info();
+    p3.print_info();
+    std::cout << "-------------------\n";
+    Person students[] = {p1, p2, p3}; /* p1, p2, p3 will be copied here */
+    std::cout << "-------------------\n";
+    for(Person s : students) /* s is not a reference, so s here is copied by each element in array */
+        s.print_info();
+    std::cout << "-------------------\n";
+    for(Person &s : students) /* Avoid unnecessary copy */
+        s.print_info();
 
     return 0;
 }
