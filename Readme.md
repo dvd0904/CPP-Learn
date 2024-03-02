@@ -673,5 +673,36 @@ constructor call.
 ### Move constructors
 
 ```
+- Move constructor is a special kind of constructor whose job is steal data from temporary object.
+```
+
+![alt text](image/class42.jpg)
+
+#### Don't use move constructor
+
+![alt text](image/class43.png)
 
 ```
+- If we don't use move constructor, the copy constructor will be called and it can do a lot of work 
+like allocating new memory or copying data...
+This is really attractive if the member variables are pointing to something really big.
+
+- Result:
+Point constructed at: 0x9e3a3ff6f0
+Copy constructor called for: 0x9e3a3ff6e0
+```
+
+#### Use move constructor
+
+![alt text](image/class44.png)
+
+```
+- Move constructor use "&&"
+- If we use move constructor, we will avoid a lot of work. We just stealing data from temporary object
+what is going to be thrown away by the compiler and we not allocating or copying something.
+
+- Result:
+Point constructed at: 0xae303ffa30
+Move constructor called
+```
+
