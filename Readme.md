@@ -706,3 +706,66 @@ Point constructed at: 0xae303ffa30
 Move constructor called
 ```
 
+### Deleted Constructors
+
+```
+
+```
+
+### Initializer list constructors
+
+```
+
+```
+
+### Aggregate Initialization
+
+```
+
+```
+
+### Designated Initializer
+
+```
+
+```
+
+### Uniform Initializer for Aggregates
+
+```
+
+```
+
+## 34. Friends
+
+### Friend functions
+
+![alt text](image/class45.jpg)
+
+```
+- Friend functions are facility to let external functions have access to private member variable of
+our own.
+```
+
+![alt text](image/class46.jpg)
+
+#### NOTE
+
+```
+- The friend function is first declared and alive somewhere.
+- The implementation can live in any translation unit. Sure that it will be found in link stage.
+- The declaration has to show up before using the function.
+- The class determines who is its friends (through friend declaration, must be inside the class).
+- The friend declaration can appear in public or private section of the class, either works the same.
+- Can have multiple friend functions in the class.
+- Friend functions can be overload.
+- Have to be use the obj_name.member_var syntax in the friend function because the friend functions
+are not the member of the class, so they can not access directly.
+- Friend functions don't have access to the this pointer.
+```
+
+### Friend class
+
+```
+- Friend classes are facility to give external classes access to other class member variable.
+```
