@@ -757,7 +757,7 @@ our own.
 - The declaration has to show up before using the function.
 - The class determines who is its friends (through friend declaration, must be inside the class).
 - The friend declaration can appear in public or private section of the class, either works the same.
-- Can have multiple friend functions in the class.
+- Can have multiple friend functions in the class. 
 - Friend functions can be overload.
 - Have to be use the obj_name.member_var syntax in the friend function because the friend functions
 are not the member of the class, so they can not access directly.
@@ -766,6 +766,15 @@ are not the member of the class, so they can not access directly.
 
 ### Friend class
 
+![alt text](image/class47.jpg)
+
 ```
 - Friend classes are facility to give external classes access to other class member variable.
+- Friend classes can read or even modify the member variables even though they are public or private.
+- Just like friend functions, friend classes are not really member so they don't have directly access
+to the "this" pointer.
 ```
+
+![alt text](image/class48.jpg)
+
+## 35. Static Members

@@ -4,3 +4,4 @@ main.exe: dai.cc
 
 clean: 
 	del main.exe
+	rm main.exe
