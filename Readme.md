@@ -778,3 +778,33 @@ to the "this" pointer.
 ![alt text](image/class48.jpg)
 
 ## 35. Static Members
+
+### Static member variables
+
+```
+- Static members is member variables that not tied to any object of the class. They live in the context
+of object blueprints. They are created even before a single class object has been created.
+- They are variables that are attached to the class itself and they are not attached to any object of class.
+```
+
+![alt text](image/class49.jpg)
+
+#### NOTE
+
+```
+- Static variable doesn't belong to any object, we can modify our static variable if we want ion any const
+member function. The const keyword after a member function is going to prevent you from modifying any member
+variable in the object but the static variable is not associated to any object, it belongs to the class, so 
+the const member function does not protect it.
+```
+
+![alt text](image/class50.jpg)
+
+```
+- Non integral static member variables, be it const or non const can't be in-class initialized. 
+```
+
+![alt text](image/class51.jpg)
+
+## 36. Namespaces
+
