@@ -792,7 +792,7 @@ of object blueprints. They are created even before a single class object has bee
 #### NOTE
 
 ```
-- Static variable doesn't belong to any object, we can modify our static variable if we want ion any const
+- Static variable doesn't belong to any object, we can modify our static variable if we want in any const
 member function. The const keyword after a member function is going to prevent you from modifying any member
 variable in the object but the static variable is not associated to any object, it belongs to the class, so 
 the const member function does not protect it.
@@ -807,4 +807,16 @@ the const member function does not protect it.
 ![alt text](image/class51.jpg)
 
 ## 36. Namespaces
+
+### Creating Namespaces
+
+![alt text](image/namespaces_1.jpg "Error")
+
+```
+- Sometimes you want to have different definitions for the same function.
+- Example: you have 2 functions with the same name and parameters but they have the different 
+implementation. This will cause compiler error -> Namespaces is facility to do this.
+```
+
+![alt text](image/namespaces_2.jpg "Work")
 
