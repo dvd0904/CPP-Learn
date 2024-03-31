@@ -1,6 +1,6 @@
 
-main.exe: dai.cc
-	g++ $^ -o $@
+main.exe: dai.cc dog.cc
+	g++ $^ -o $@ -I .
 
 clean: 
 	rm main.exe

@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+project(main)
+
+set(CMAKE_C_COMPILER "C:/MinGW/bin/gcc.exe")
+set(CMAKE_CXX_COMPILER "C:/MinGW/bin/g++.exe")
+set(CMAKE_GENERATOR "MinGW Makefiles" CACHE INTERNAL "" FORCE)
+
+set(SOURCE_FILES
+main.cc
+line.cc
+point.cc
+cylinder.cc
+)
+
+set(HEADER_FILES
+line.h
+point.h
+cylinder.h
+)
+
+add_executable("${PROJECT_NAME}" ${SOURCE_FILES} ${HEADER_FILES})
+target_include_directories("${PROJECT_NAME}" PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

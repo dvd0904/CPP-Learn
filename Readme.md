@@ -364,7 +364,7 @@ Like pass by reference. Modifying a parameter in template function will reflect 
 ![alt text](image/template_spe.jpg)
 
 ```
-
+- Pending ...
 ```
 
 ## 30. Class
@@ -523,7 +523,7 @@ That's not going to work either.
 
 ![alt text](image/class19.jpg)
 
-#### Pass by value (to const)
+#### Pass by pointer (to const)
 
 ![alt text](image/class20.jpg)
 
@@ -820,3 +820,31 @@ implementation. This will cause compiler error -> Namespaces is facility to do t
 
 ![alt text](image/namespaces_2.jpg "Work")
 
+### Namespaces across multiple files
+
+```
+- Multiple namespaces with the same name (even in another file) are considered one.
+```
+
+### Default global namespaces
+
+```
+- Anything outside any namespaces is said to lie in the default global namespace.
+- Call a function outside the namespace inside the namespace can use "::" operator. 
+```
+
+![alt text](image/namespaces_3.jpg)
+
+
+### Built in Namespaces
+
+```
+- An example built in namespace is "std".
+```
+
+### Using declarations
+
+```
+- This is a facility in C++ to be able to call things that live inside a namespace without explicitly specifying the
+namespace name. (std::cout -> cout)
+```
