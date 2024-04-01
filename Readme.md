@@ -736,7 +736,7 @@ Move constructor called
 
 ```
 
-## 34. Friends
+## 33. Friends
 
 ### Friend functions
 
@@ -777,7 +777,7 @@ to the "this" pointer.
 
 ![alt text](image/class48.jpg)
 
-## 35. Static Members
+## 34. Static Members
 
 ### Static member variables
 
@@ -806,7 +806,7 @@ the const member function does not protect it.
 
 ![alt text](image/class51.jpg)
 
-## 36. Namespaces
+## 35. Namespaces
 
 ### Creating Namespaces
 
@@ -846,5 +846,77 @@ implementation. This will cause compiler error -> Namespaces is facility to do t
 
 ```
 - This is a facility in C++ to be able to call things that live inside a namespace without explicitly specifying the
-namespace name. (std::cout -> cout)
+namespace name. (std::cout -> cout: bringing entire namespace)
+```
+
+### Anonymous Namespaces
+
+```
+- When the compilers sees an anonymous namespace declaration, it will generate an internal name for the namespace
+- The generated unique namespace name is not accessible to the developer.
+- There can only be use anonymous namespace for a single translation unit. If the developer set up multiple anonymous
+namespaces blocks, they'll just be extensions to the first one.
+- Anonymous namespaces in different translation units are completely separate though, the compiler generates different
+unique namespace names for them behind the scenes.
+- Because the developers don't have access to the compiler generated namespace name for anonymous namespaces, names
+declared inside anonymous namespaces are only reachable in the translation unit where they declare.
+
+```
+
+![alt text](image/namespaces_4.jpg "Anonymous namespace vs global namespace")
+
+```
+- Even though the compiler will generate an internal name for the anonymous namespace, the contents of the anonymous 
+namespace are still available and usable from the global namespace without any namespace prefix. 
+```
+
+![alt text](image/namespaces_5.jpg)
+
+```
+- ::add(1,2) instructs the compiler to look for the function in the global namespace. It won't find one defined 
+explicitly. But the compiler doesn't give up that easily. It'll find one buried under an anonymous namespace. Knowing 
+that content from anonymous namespaces should be accessible from the global namespace, it'll pick that up and use it.
+```
+
+![alt text](image/namespaces_6.jpg)
+
+```
+- ::add(1,2) instructs the compiler to look for the function in the global namespace and it'll find the one that just adds 
+a and b. The one in the anonymous namespace is really buried under a namespace whose name is maintained by the compiler. 
+The compiler prefers the function explicitly defined in the global namespace. 
+```
+
+### Nested Namespaces (Namespace inside other namespace)
+
+```
+- Inner namespace can directly access the outer variable without specifying the outer namespace name.
+Outer can not directly access to the inner variable, it must access through Inner namespace name.
+```
+
+### Namespace Aliases
+
+![alt text](image/namespaces_7.jpg)
+
+```
+- This is a facility in C++ to set up a reasonable names for namespaces.
+- Example: There are 20 nested namespaces. So, accessing the deepest namespace is fucking crazy. Alias will solve this problem. 
+
+```
+
+## 36. Program with multiple files
+
+### One Definition Rule
+
+```
+
+```
+
+
+# NOTE
+
+### Translation Unit
+```
+- A source file together with all the headers and source files included via the preprocessing directive #include 
+is known as a preprocessing translation unit. After preprocessing, a preprocessing translation unit is called a 
+translation unit.
 ```

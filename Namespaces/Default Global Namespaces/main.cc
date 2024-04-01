@@ -24,5 +24,7 @@ namespace myNamespace
 
 int main()
 {
+    /* These syntax below is the same thing */
+    ::myNamespace::doSth();
     myNamespace::doSth();
 }   

@@ -13,6 +13,7 @@ class FRIEND
     private:
         int private_var {4};
 };
+
 /* Now, these functions are work because they are friend functions, so they can access 
    anything from FRIEND class */
 void func(const FRIEND &f)
