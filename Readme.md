@@ -908,9 +908,15 @@ Outer can not directly access to the inner variable, it must access through Inne
 ### One Definition Rule
 
 ```
+- A source file together with all the headers and source files included via the preprocessing directive #include is known as a 
+preprocessing translation unit. After preprocessing, a preprocessing translation unit is called a translation unit.
+```
+
+### Linkage
 
 ```
 
+```
 
 # NOTE
 

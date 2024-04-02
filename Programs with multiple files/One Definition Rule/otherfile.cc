@@ -1,1 +1,3 @@
-int y = 4;
+#include <iostream>
+
+int x = 4;
