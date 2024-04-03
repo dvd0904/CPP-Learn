@@ -914,9 +914,41 @@ preprocessing translation unit. After preprocessing, a preprocessing translation
 
 ### Linkage
 
-```
+#### No linkage
 
 ```
+- Function local variables have no linkage
+```
+
+![alt text](image/linkage.jpg)
+
+#### Internal linkage
+
+```
+- Const global variables have internal linkage by default.
+```
+
+![alt text](image/linkage2.jpg)
+
+#### External linkage
+
+```
+- The "extern" keyword mean that the external variable can be accessed from other translation unit.
+- Functions are external linkage by default -> may or may not be needed to mark them as external. 
+```
+
+![alt text](image/linkage3.jpg)
+
+### Flipping Linkage
+
+```
+- Change an internal linkage to external linkage by adding the "extern" keyword.
+- Change an external linkage to internal linkage by adding the "static" keyword or wrapping that in
+anonymous namespace.
+
+```
+
+
 
 # NOTE
 
