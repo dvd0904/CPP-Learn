@@ -966,6 +966,20 @@ unit. So, this behavior can cause an error: "multiple definition".
 
 ![alt text](image/inline2.jpg "Using inline to solve error multiple definition")
 
+
+### Inline vs Static (Anonymous namespace)
+
+```
+- Inline will optimize all the definitions for a name into one but marking your things for internal linkage.
+- Static or anonymous namespaces won't do such optimizations.
+```
+
+### Forward Declaration 
+
+```
+
+```
+
 # NOTE
 
 ### Translation Unit
