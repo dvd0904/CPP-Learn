@@ -948,7 +948,23 @@ anonymous namespace.
 
 ```
 
+### Inline variables and functions
 
+```
+- Suppose you have a utility file header, there is a variable and a function inside it and we want to
+include this header file in multiple file. But, including header is just going to copy the contents of 
+the header. If we did this without using "inline" keyword, we would violating "one definition rule" 
+because this function and variable, the definitions for them would be showing up in multiple translation
+unit. So, this behavior can cause an error: "multiple definition".
+```
+
+![alt text](image/inline1.jpg "Error: Multiple definition")
+
+```
+- The solution for this problem is "inline".
+```
+
+![alt text](image/inline2.jpg "Using inline to solve error multiple definition")
 
 # NOTE
 
