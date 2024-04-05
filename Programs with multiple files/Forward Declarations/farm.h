@@ -1,23 +1,26 @@
 #ifndef FARM_H
 #define FARM_H
 
+#include "dog.h" // Include -> waste compile time
 // class Dog; // Forward declaration
-#include "dog.h"
 
 class Farm
 {
 public:
 	Farm();
 	~Farm();
-	
-	void use_dog(const Dog& dog_param); // Doesn't require the definition
 
-    // void do_something(const Dog& dog_param){
-    //     dog_param.print_info();
-    // }
+    // Doesn't require the definition of Dog object because we don't use it in the header file
+	void use_dog(const Dog& dog_param); 
+
+    void do_something(const Dog& dog_param)
+    {
+        /* Forward declaration won't work here, if you want to use it, you need to include dog header file */
+        dog_param.print_info(); 
+    }
 private : 
-    //Dog dog_member;
-
+    /* Forward declaration won't work here, if you want to use it, you need to include dog header file */
+    Dog dog_member; 
 };
 
 #endif // FARM_H

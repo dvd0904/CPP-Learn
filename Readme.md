@@ -970,21 +970,50 @@ unit. So, this behavior can cause an error: "multiple definition".
 ### Inline vs Static (Anonymous namespace)
 
 ```
-- Inline will optimize all the definitions for a name into one but marking your things for internal linkage.
+- Inline will optimize all the definitions for a name into one but marking your things for 
+internal linkage.
 - Static or anonymous namespaces won't do such optimizations.
 ```
 
 ### Forward Declaration 
 
 ```
+- Suppose that we have a farm.h (contain farm class) and dog.h (contain dog class) file. In farm.h 
+we use dog class, so obviously we need to include dog.h header file in farm.h otherwise we're going
+to get a compiler error. But, this behavior is going to waste a lot of compilation time.
+- Example: we have the farm.h header file included in other headers. If the dog implementation changes,
+but the farm header file is including the dog header file, so it will be recompiled and if the farm
+header file is included in 500 other headers, all of them are going to be recompiled
+-> This turned out to be a problem.
+-> Cpp solve this problem by a facility "Forward Declaration"
+```
+
+![alt text](image/forward-declaration.jpg "farm.h")
 
 ```
+- By using "Forward Declaration", this is basically tell the compiler: "If you see this name, don't 
+freak out, you're going to see a definition for this later when you actually need to use the dog. At
+this time, you don't use so don't give me a problem."
+```
+
+#### NOTE
+
+```
+- Forward Declaration won't always work because it is really not giving us all information we need to use
+a dog object.
+```
+
+![alt text](image/forward-declaration1.jpg)
+
+
+## 40. Inheritance
 
 # NOTE
 
 ### Translation Unit
+
 ```
-- A source file together with all the headers and source files included via the preprocessing directive #include 
-is known as a preprocessing translation unit. After preprocessing, a preprocessing translation unit is called a 
-translation unit.
+- A source file together with all the headers and source files included via the preprocessing directive 
+#include is known as a preprocessing translation unit. After preprocessing, a preprocessing translation 
+unit is called a translation unit.
 ```
