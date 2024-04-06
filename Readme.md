@@ -1005,8 +1005,72 @@ a dog object.
 
 ![alt text](image/forward-declaration1.jpg)
 
+## 37. Operator Overloading
+
+### Addition Operator as Member
+
+```
+- Operator overloading is the mechanism in CPP to support different kind of operators for your own types.
+```
+
+![alt text](image/operator1.jpg "Syntax to overload operators as member")
+
+#### Behind the scenes
+
+![alt text](image/operator2.jpg "Operator overloading behind the scenes")
+
+```
+- The first operand or the left operand is going to become the object on which we call our operator member
+function.
+```
+
+### Addition Operator as Non-member function
+
+![alt text](image/operator3.jpg "Syntax to overload operators as non-member")
+
+```
+- By this way, operator function is not the member function of the class. So, you can not access directly the private
+parts of the class (or using the this pointer), you can only access the private parts via an object. And, to give it 
+access, you need to declare this operator function as a friend function.
+```
+
+![alt text](image/operator4.jpg "Operator function here is not the member function of class")
+
+#### Behind the scenes
+
+![alt text](image/operator5.png "Operator overloading with non-member function behind the scenes")
+
+
+### Subscript operator for reading
+
+```
+- Subscript operator is what we have been using to read and manipulate data from our arrays. (It's the same with 
+access the array member via "[]")
+- Subscript operator is binary operator.
+- It's one the operators that must be set up as member function.
+```
+
+![alt text](image/operator6.jpg "Subscript operator overloading must be member function")
+
+#### Behind the scenes
+
+![alt text](image/operator7.jpg "Subscript operator overloading behind the scenes")
+
+### Subscript operator for reading and writing
+
+```
+- To use subscript operator for writing (modifications), the operator function need to return a reference. Because 
+it returns a reference so it is can't be a const member function.
+```
+
+![alt text](image/operator8.jpg)
+
 
 ## 40. Inheritance
+
+```
+
+```
 
 # NOTE
 
