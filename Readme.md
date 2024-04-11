@@ -1065,6 +1065,35 @@ it returns a reference so it is can't be a const member function.
 
 ![alt text](image/operator8.jpg)
 
+### Subscript Operator for collection types
+
+![alt text](image/operator9.jpg)
+
+```
+- To use subscript operator with const object, you need to use a const member function.
+```
+
+### Stream Insertion Operation Operator
+
+#### Use member function
+
+![alt text](image/operator10.jpg)
+
+```
+- When you use as member function, the first operand must be the object.
+```
+
+![alt text](image/operator11.jpg)
+
+#### Use freestanding function
+
+![alt text](image/operator12.jpg)
+
+```
+- Use this function as friend function.
+```
+
+![alt text](image/operator13.jpg)
 
 ## 40. Inheritance
 
