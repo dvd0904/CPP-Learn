@@ -20,6 +20,7 @@ public:
     {
 		std::cout << "Point [ x : " << m_x << ", y : " << m_y << "]" << std::endl;
 	}
+	
 private: 
 	double length() const;   // Function to calculate distance from the point(0,0)
 

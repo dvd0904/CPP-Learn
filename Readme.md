@@ -615,6 +615,10 @@ Like default parameters in JS.
 
 ![alt text](image/class31.jpg)
 
+```
+- Explicit constructor tell the compiler that never let this constructor use implicit conversions.
+```
+
 ### Constructor Delegation
 
 ```
@@ -1094,6 +1098,26 @@ it returns a reference so it is can't be a const member function.
 ```
 
 ![alt text](image/operator13.jpg)
+
+
+### Custom Type conversion
+
+![alt text](image/operator14.jpg)
+
+```
+- Custom type conversion operators can only be done as member function.
+- Another rule is that we don't need to put return type at type conversion operator function, otherwise
+we will get the compiler error. The return type is going to be deduced from the name of function.
+```
+
+![alt text](image/operator15.jpg)
+
+
+
+
+
+
+
 
 ## 40. Inheritance
 
