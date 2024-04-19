@@ -1121,8 +1121,70 @@ we will get the compiler error. The return type is going to be deduced from the 
 
 ## 40. Inheritance
 
+### First try on Inheritance
+
+```
+- Syntax use to derive from another class (class inheritedClass : public baseClass).
+- After doing that, inheritedClass class is going to have the person information embedded inside. But
+we also have the ability to customize or add other things at level of the inheritedClass class. In
+inheritedClass we can have a private member variable and our own set of constructors, we can really
+build the inheritedClass objects but they are going to have a baseClass part inside.
 ```
 
+#### Public Inheritance
+
+![alt text](image/inheritance1.jpg "Inherited class can't directly access to the private part of base class")
+
+```
+- With public Inheritance, derived classes can access and use public members of base class, but derive
+class can't directly access private member.
+- The same also applies to friends of the derived class. They have access to private member of derived
+but don't have access to the private part of the base class.
+
+```
+
+### Protected Members
+
+![alt text](image/inheritance2.jpg "Inherited class can directly access to the protected part of base class")
+
+```
+- The private member variables are not going to be accessible and usable from derived class that do 
+public inheritance. Sometimes, we want the members from the base class to at least be accessible and 
+usable from a derived class but still be inaccessible from the outside (note that this behavior can
+only be allowed with public inheritance). -> We can achieve this by using access specifier.
+```
+
+### Base Class Access Specifiers
+
+```
+- Through the base class access specifier (public, protected, private), we can control how relaxed 
+or constrained is the access of base class members from derived class.
+- Regardless of the access specifier, private members of base class are never accessible from from
+derived classes.
+```
+
+#### With Public Inheritance
+
+```
+- Anything that is public in base class is going to be public in derived class.
+- Anything that is protected in base class is going to be protected in derived class.
+- Anything that is private in base class is going to be private in derived class.
+```
+
+#### With Protected Inheritance
+
+```
+- Anything that is public in base class is going to be protected in derived class.
+- Anything that is protected in base class is going to be protected in derived class.
+- Anything that is private in base class is going to be private in derived class.
+```
+
+#### With Private Inheritance
+
+```
+- Anything that is public in base class is going to be private in derived class.
+- Anything that is protected in base class is going to be private in derived class.
+- Anything that is private in base class is going to be private in derived class.
 ```
 
 # NOTE
