@@ -281,8 +281,8 @@ lambda function can access to things that are declared or defined outside the la
 ![Alt text](image/capture-everything.jpg)
 
 ```
-Use "=" in capture lists to capture everything by value.
-Use "&" in capture lists to capture everything by reference.
+- Use "=" in capture lists to capture everything by value.
+- Use "&" in capture lists to capture everything by reference.
 
 ```
 
@@ -291,20 +291,19 @@ Use "&" in capture lists to capture everything by reference.
 ### Static variables
 
 ```
-Both global and static variables have static storage duration. They live throughout the entire lifetime of the program.
-
-Static variables are scoped to the function in which they are declared and used. Trying to access them outside that
+- Both global and static variables have static storage duration. They live throughout the entire lifetime of the program.
+- Static local variables are not destroyed when a function returns. 
+- Static variables are scoped to the function in which they are declared and used. Trying to access them outside that
 function will get a compiler error.
-
-Global variables are scoped to the global scope of the file where they are declared. They are accessible and usable
+- Global variables are scoped to the global scope of the file where they are declared. They are accessible and usable
 through out the entire file.
 ```
 
 #### Global variables
 
 ```
-A global variable is initialized when the program is starting, it's even initialized before the main function runs.
-Its lifetime is going to start when the application starts and it's going to be destroyed when the application is killed.
+- A global variable is initialized when the program is starting, it's even initialized before the main function runs.
+- Its lifetime is going to start when the application starts and it's going to be destroyed when the application is killed.
 ```
 
 #### Static variables
@@ -312,15 +311,15 @@ Its lifetime is going to start when the application starts and it's going to be 
 ![Alt text](image/static-var.jpg)
 
 ```
-Static variables is the same with global variables but its scope is going to be limited to the function where it is
+- Static variables is the same with global variables but its scope is going to be limited to the function where it is
 declared. So, can not use static variable outside.
 ```
 
 #### Difference between the scope and the lifetime of variables
 
 ```
-The scope is within a curly braces in the function where the variable is declared.
-The lifetime of variables is not tied to the curly braces. It's going to live throughout the entire lifetime of application.
+- The scope is within a curly braces in the function where the variable is declared.
+- The lifetime of variables is not tied to the curly braces. It's going to live throughout the entire lifetime of application.
 ```
 
 ### Inline functions
@@ -1113,12 +1112,6 @@ we will get the compiler error. The return type is going to be deduced from the 
 ![alt text](image/operator15.jpg)
 
 
-
-
-
-
-
-
 ## 40. Inheritance
 
 ### First try on Inheritance
@@ -1168,7 +1161,9 @@ derived classes.
 ```
 - Anything that is public in base class is going to be public in derived class.
 - Anything that is protected in base class is going to be protected in derived class.
-- Anything that is private in base class is going to be private in derived class.
+- Anything that is private in base class is going to be private in derived class (You can't access that even 
+if it's part of you, derived class has a base class part of it, but it's can't access the private members
+from base class directly).
 ```
 
 #### With Protected Inheritance
@@ -1176,7 +1171,9 @@ derived classes.
 ```
 - Anything that is public in base class is going to be protected in derived class.
 - Anything that is protected in base class is going to be protected in derived class.
-- Anything that is private in base class is going to be private in derived class.
+- Anything that is private in base class is going to be private in derived class (You can't access that even 
+if it's part of you, derived class has a base class part of it, but it's can't access the private members
+from base class directly).
 ```
 
 #### With Private Inheritance
@@ -1184,8 +1181,54 @@ derived classes.
 ```
 - Anything that is public in base class is going to be private in derived class.
 - Anything that is protected in base class is going to be private in derived class.
-- Anything that is private in base class is going to be private in derived class.
+- Anything that is private in base class is going to be private in derived class (You can't access that even 
+if it's part of you, derived class has a base class part of it, but it's can't access the private members
+from base class directly).
 ```
+
+### Base Class Access Specifiers: A demo
+
+#### Public Inheritance
+
+![alt text](image/inheritance3.jpg)
+
+![alt text](image/inheritance4.jpg)
+
+
+#### Protected Inheritance
+
+![alt text](image/inheritance5.jpg)
+
+![alt text](image/inheritance6.jpg)
+
+
+#### Private Inheritance
+
+![alt text](image/inheritance7.jpg)
+
+![alt text](image/inheritance8.jpg)
+
+
+### Closing in on Private Inheritance
+
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # NOTE
 

@@ -5,8 +5,8 @@ Player::Player(std::string_view game_param)
     : m_game(game_param)
 {
     /* Compiler error */
-    first_name = "John"; 
-    last_name = "Snow";
+    // first_name = "John"; 
+    // last_name = "Snow";
 }
 
 std::ostream& operator<<(std::ostream& out, const Player& player)
