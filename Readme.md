@@ -1212,12 +1212,37 @@ from base class directly).
 ### Closing in on Private Inheritance
 
 ```
-
+- It's doesn't matter which kind of inheritance you do, the private part of base class is going to still be not
+accessible to derived classes.
 ```
 
+#### Example: Analyze this class hierarchy
 
+![alt text](image/inheritance9.png)
 
+```
+- Engineer class is the private inheritance of class Person. So, m_1 and m_2 are going to strip down to private 
+access level in Engineer class. So, any class that try to inherit from Engineer class is not going to have access
+to m_1 and m_2 and m_3(m_3 stay private).
+```
 
+![alt text](image/inheritance10.png)
+
+![alt text](image/inheritance11.png)
+
+### Resurrecting members back in scope
+
+![alt text](image/inheritance9.png)
+
+```
+- Suppose we have a class hierarchy like this. So, in CivilEngineer class, we can't use m_1, m_2 and m_3. But for
+some reason, we want to use them. So how to do that? 
+-> RESURRECT them. But note that YOU CAN'T RESURRECT SOMETHING THAT IS ALREADY PRIVATE.
+```
+
+![alt text](image/inheritance12.png)
+
+![alt text](image/inheritance13.png)
 
 
 
