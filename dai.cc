@@ -1,36 +1,21 @@
 #include <iostream>
-#include "dog.h"
-
-
-class A
+namespace ABC
 {
-    public:
-        int plus(int b)
-        {
-            static int c = 3;
-            c += b;
-            return c;
-        }
+    void func1()
+    {
+        std::cout << 1;
+    }
+    static void func2()
+    {
+        std::cout << 2;
+
+    }
 };
-
-int func(int a)
-{
-    static int x = 2;
-    x += a;
-    return x;
-}
 
 int main()
 {
-
-    // A obj;
-    // obj.plus(2);
-    // int x = obj.plus(2);
-    // std::cout << x;
-
-    int a = func(2);
-    a = func(2);
-    std::cout << a;
+    ABC::func1();
+    ABC::func2();
 
 }
 

@@ -863,7 +863,6 @@ namespaces blocks, they'll just be extensions to the first one.
 unique namespace names for them behind the scenes.
 - Because the developers don't have access to the compiler generated namespace name for anonymous namespaces, names
 declared inside anonymous namespaces are only reachable in the translation unit where they declare.
-
 ```
 
 ![alt text](image/namespaces_4.jpg "Anonymous namespace vs global namespace")
@@ -1245,11 +1244,47 @@ some reason, we want to use them. So how to do that?
 ![alt text](image/inheritance13.png)
 
 
+## 41. Polymorphism
 
+```
+- Polymorphism is the set up we can do in C++ programs to use a base pointer and manager derived 
+object.
+- Polymorphism allows us to be able to store different kinds of object in a single collection 
+(Example: an array of string can't store int or double)
+```
 
+### Static Biding with Inheritance
 
+![alt text](image/poly1.jpg)
 
+```
+- With this Inheritance Hierarchy, the methods in each class are completely the same. The methods 
+in derived class are going to hide the methods we have in the base class.   
+- In this Inheritance Hierarchy, Oval and Circle object will be managed by Shape pointer.
+- Polymorphism is a design principle in C++ to manage memory objects through base class pointer or
+references and getting right method called on the base pointer or reference.
+```
 
+#### Question? Why you need to manage your objects through base class pointers?
+
+```
+Suppose you have an application like paint in Windows, you want to draw a shape like a circle, 
+a star or something else, you don't want to call hundreds of methods to draw hundreds of shapes
+on screen -> this is not scalable. So, with Polymorphism, you can do it easily, you just need a 
+single method that takes a base pointer and you can give it any kind of shape to draw and C++
+program will know which kind of draw method to know base on the kind of object you pass into.
+```
+
+#### Static binding with base class pointer or base class reference
+
+```
+- The compiler just looks at the pointer type or reference type to decide with draw() version to
+call. 
+- Example: The compiler sees Shape* or Shape& and calls Shape::draw(). What we really want to call
+is Oval::draw() or Circle::draw() but the default behavior is static binding so what is called 
+here is Shape::draw().
+-> This is static binding in action!
+```
 
 
 
@@ -1263,4 +1298,29 @@ some reason, we want to use them. So how to do that?
 - A source file together with all the headers and source files included via the preprocessing directive 
 #include is known as a preprocessing translation unit. After preprocessing, a preprocessing translation 
 unit is called a translation unit.
+```
+
+### Object
+
+```
+- Object is an instance of class. Class is user defined data type -> object can be called as variable 
+of class.
+```
+
+### Encapsulation
+
+```
+https://cppdeveloper.com/tutorial/tinh-dong-goi-encapsulation-trong-lap-trinh-huong-doi-tuong/
+```
+
+### Abstraction
+
+```
+https://cppdeveloper.com/tutorial/tinh-truu-tuong-trong-lap-trinh-huong-doi-tuong/
+```
+
+### Structure Member Alignment
+
+```
+https://www.geeksforgeeks.org/structure-member-alignment-padding-and-data-packing/
 ```
