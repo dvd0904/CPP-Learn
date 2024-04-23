@@ -1401,7 +1401,95 @@ we're going to get in memory.
 ![alt text](image/poly12.jpg)
 
 
+### Polymorphism Objects Stored in Collections (array)
 
+![alt text](image/poly13.jpg)
+
+```
+- If you store objects in an array like this above, this is going to create copies even if you don't see that
+directly. So what we have in "shape1" array here is not any kind of direct reference to the objects on top 
+(6 objects Oval an Circle), these are just copies. 
+- What we are doing here is copying derived objects into an array of shape object. So, all information about
+Oval and Circle are sliced off and only shape object information is going to stored in the "shape1" array. So,
+in the for loop, we are going to manage all elements in "shape1" array by the base pointer of shape object 
+or by the base reference.
+- What we want the for loop do is going to call the most specific draw method for Circle or Oval. But, at the
+moment you copy the derived objects into "shape1" array, all data about Oval and Circle are sliced off and you
+can't get that data back, the data has been lost permanently. So, the draw method is actually call in this for
+loop is the shape version of draw method.
+```
+
+#### Storing in reference: not compile
+
+![alt text](poly14.png)
+
+```
+----------------------------------------------The Left Assignability Rule----------------------------------------------
+- You can't assign to a reference and change the reference to store somewhere else. 
+- References are not left assignable, you can't store things that are not left assignable in an array because
+an array is designed to modify the data of what we store inside. So if we set up an array like this "shape2"
+array above, the compiler thinks that at some later point you will want to assign other data to what is already 
+stored in this array. If we try to do that, we will get compiler error.
+```
+
+#### Storing in pointers: work
+
+![alt text](poly15.jpg)
+
+```
+- The basic working principle of polymorphism is going through base pointers to manage derived objects. So, the for
+loop here will work properly.
+```
+
+#### Storing in Smart Pointers: Work
+
+```
+
+```
+
+### Override
+
+```
+- Override Specification is a kind of set up we can do to to avoid error in our Inheritance Hierarchies if we
+use virtual functions to set up polymorphism behavior for our derived objects.
+```
+
+![alt text](poly16.jpg)
+
+```
+- Suppose we have a method called "DRAW" like this above. This is a MISTAKE but we're not going to getting any
+compiler error because this "DRAW" method is just a new method and this's going to work. So, this is very hard 
+to detect the mistake, the compiler won't protect our in this case.
+```
+
+![alt text](poly17.jpg)
+
+```
+- Suppose we set up a piece of code like this, in the for loop we want to call a draw method with exactly version.
+But the output is not what we expect.
+
+Output: 
+Circle::draw() called. Drawing circle1 with radius : 7.2 
+Shape::draw() called. Drawing Oval1
+Circle::draw() called. Drawing circle2 with radius : 11.2
+Shape::draw() called. Drawing Oval2
+Circle::draw() called. Drawing circle3 with radius : 12.2
+Shape::draw() called. Drawing Oval3
+
+- From the output, we can see that Oval object has called the Shape::draw(), that's not what we want. But the program
+is built successfully, we don't get any error. 
+```
+
+![alt text](poly18.jpg)
+
+```
+- So why? In the Oval object, we have "DRAW" with all upper case word, this is completely different method than the 
+draw method in base class and what we called in the for loop is "draw". Because this mistake is not easy to detect, we
+can protect ourself by adding the "override" keyword. After that, the compiler is going to help our and make sure we're
+trying to override the method that exist in the base class (shape), if it does not exist, we're going to get the compiler
+error. 
+- SO, USE OVERRIDE WHEN WE HAVE TO USE VIRTUAL TO AVOID THE MISTAKE.
+```
 
 # NOTE
 
