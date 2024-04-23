@@ -4,7 +4,7 @@
 
 ### C++ Program Execution Model & Memory Model
 
-![Alt text](image/program_execution.jpg)
+![alt text](image/program_execution.jpg)
 
 ## 9. Operations on Data
 
@@ -93,7 +93,7 @@ RULES:
 2. Don't try to work with a pointer that is pointing to null.
 ```
 
-![Alt text](image/mem_layout.jpg)
+![alt text](image/mem_layout.jpg)
 
 ### Dangling Pointer
 
@@ -137,7 +137,7 @@ RULES:
 
 ### Comparing pointers and references
 
-![Alt text](image/pointer_reference.jpg)
+![alt text](image/pointer_reference.jpg)
 
 ```
 int a = 5, b = 10;
@@ -210,7 +210,7 @@ Const applies to reference variable name, not to the original variable.
 
 ### Return by value
 
-![Alt text](image/return-by-val.jpg)
+![alt text](image/return-by-val.jpg)
 
 ```
 - If a function return by value like std::string. Suppose the string is returned has 1000 characters inside.
@@ -220,11 +220,11 @@ by value. It's going to do some kind of return by reference (not really return b
 
 ### Return by reference
 
-![Alt text](image/return-by-ref1.jpg)
+![alt text](image/return-by-ref1.jpg)
 
 #### References to local variables
 
-![Alt text](image/return-by-ref2.jpg)
+![alt text](image/return-by-ref2.jpg)
 
 ```
 Local variables are destroyed when the function terminates or finishes executing. So, trying to use the reference
@@ -236,7 +236,7 @@ behavior (crash) because the function and its memory are going to be destroyed, 
 
 #### Pointers to local variables
 
-![Alt text](image/return-by-pointer.jpg)
+![alt text](image/return-by-pointer.jpg)
 
 ```
 This problem is the same with references to local variable.
@@ -258,7 +258,7 @@ Function overloading is a mechanism in C++ to have multiple copies of the same f
 
 ### Declaring and using lambda functions
 
-![Alt text](image/lambda-functions.jpg)
+![alt text](image/lambda-functions.jpg)
 
 ```
 A mechanism to set up anonymous functions (without names). Once, they can be given a name and can be called or can be used
@@ -274,11 +274,11 @@ lambda function can access to things that are declared or defined outside the la
 - The outside variable that the lambda function use inside it can not be modified (in case of capture by value).
 ```
 
-![Alt text](image/capture-list.jpg)
+![alt text](image/capture-list.jpg)
 
 ### Capture all in context
 
-![Alt text](image/capture-everything.jpg)
+![alt text](image/capture-everything.jpg)
 
 ```
 - Use "=" in capture lists to capture everything by value.
@@ -308,7 +308,7 @@ through out the entire file.
 
 #### Static variables
 
-![Alt text](image/static-var.jpg)
+![alt text](image/static-var.jpg)
 
 ```
 - Static variables is the same with global variables but its scope is going to be limited to the function where it is
@@ -324,13 +324,13 @@ declared. So, can not use static variable outside.
 
 ### Inline functions
 
-![Alt text](image/inline-func.jpg)
+![alt text](image/inline-func.jpg)
 
 ## 28. Function Templates
 
 ### Trying out function templates
 
-![Alt text](image/func-template2.jpg)
+![alt text](image/func-template2.jpg)
 
 ```
 - Function templates are a mechanism in C++ to avoid code repetition.
@@ -339,13 +339,13 @@ is passed into the function. Once, compiler generates the real C++ code about th
 - The function templates is forced to use the same type for the return type, all parameter type.
 ```
 
-![Alt text](image/func-template.jpg)
+![alt text](image/func-template.jpg)
 
-![Alt text](image/func-template3.jpg)
+![alt text](image/func-template3.jpg)
 
 ### Template type deduction and explicit argument
 
-![Alt text](image/func-template4.jpg)
+![alt text](image/func-template4.jpg)
 
 ```
 Template type deduction is a mechanism that the compiler uses to deduce the type it would use to set up the template instance
@@ -1421,7 +1421,7 @@ loop is the shape version of draw method.
 
 #### Storing in reference: not compile
 
-![alt text](poly14.png)
+![alt text](image/poly14.png)
 
 ```
 ----------------------------------------------The Left Assignability Rule----------------------------------------------
@@ -1434,7 +1434,7 @@ stored in this array. If we try to do that, we will get compiler error.
 
 #### Storing in pointers: work
 
-![alt text](poly15.jpg)
+![alt text](image/poly15.jpg)
 
 ```
 - The basic working principle of polymorphism is going through base pointers to manage derived objects. So, the for
@@ -1454,7 +1454,7 @@ loop here will work properly.
 use virtual functions to set up polymorphism behavior for our derived objects.
 ```
 
-![alt text](poly16.jpg)
+![alt text](image/poly16.jpg)
 
 ```
 - Suppose we have a method called "DRAW" like this above. This is a MISTAKE but we're not going to getting any
@@ -1462,7 +1462,7 @@ compiler error because this "DRAW" method is just a new method and this's going 
 to detect the mistake, the compiler won't protect our in this case.
 ```
 
-![alt text](poly17.jpg)
+![alt text](image/poly17.jpg)
 
 ```
 - Suppose we set up a piece of code like this, in the for loop we want to call a draw method with exactly version.
@@ -1480,7 +1480,7 @@ Shape::draw() called. Drawing Oval3
 is built successfully, we don't get any error. 
 ```
 
-![alt text](poly18.jpg)
+![alt text](image/poly18.jpg)
 
 ```
 - So why? In the Oval object, we have "DRAW" with all upper case word, this is completely different method than the 
