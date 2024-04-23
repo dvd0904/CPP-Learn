@@ -1286,6 +1286,119 @@ here is Shape::draw().
 -> This is static binding in action!
 ```
 
+#### Question? Why we are able to store a circle pointers for example in a shape
+
+```
+Shape *shape_ptr = &circle
+```
+
+```
+- A circle is a shape according to the Inheritance Hierarchy. Oval is inheriting from Shape, Circle
+is inheriting from Oval. So, Oval has a Shape part in it and Circle has a Oval part in it -> Oval is
+going to have Shape part in it. So we are able to manage the Oval object with the Shape pointer or 
+the fact that we are able to manage a Circle object using the Shape pointer.
+```
+
+#### Summary, What static binding is all about?
+
+```
+- It's the fact that the compiler is going to look at the type of the pointer here and use that to 
+decide which method it is going to be calling our Inheritance Hierarchy.
+- For example, the compiler is going to see this line "Shape *shape_ptr = &circle", it see the Circle
+object, but when it want to decide which "draw()" version to call, it's going to look at the type of
+this pointer (in this case is Shape) -> call "draw()" of Shape version.
+- TRY TO MANAGE OBJECTS THROUGH REFERENCE IS THE SAME BEHAVIOR.
+```
+
+![alt text](image/poly2.jpg)
+
+#### Disadvantage
+
+![alt text](image/poly3.jpg)
+
+```
+- This is bad design by default in C++. Example if you happen to need to pass shape parameters to 
+functions like this above. And if you happen to have 100 objects you can draw in your program, you
+need to set up 100 drawing methods or function -> This is really bad design.
+```
+
+### Dynamic Binding with Virtual function (Polymorphism)
+
+![alt text](image/poly4.jpg "Dynamic Binding")
+
+```
+- The problem we had was that if we happen to be managing oval object or circle object using shape
+pointer or reference, we don't get the correct method called if we call the draw method on the base
+pointer or base reference. So, to solve this problem, all you need to do is to mark the methods you 
+need to be dynamically resolve "virtual", we do that by inserting "virtual" keyword in front of our
+methods or functions.
+```
+
+#### Dynamic Binding (Polymorphism) in action
+
+![alt text](image/poly5.jpg)
+
+```
+- With virtual method, the compiler is going to be doing dynamic binding and with dynamic binding,
+the compiler will not look at the type of the pointer or reference, it will look at the type of the
+actual objects that the pointers or references are managing. So, this is the behavior we want.
+```
+
+#### Advantage
+
+![alt text](image/poly7.jpg)
+
+```
+- Solve the problem of Static Binding. If we have 100 kind of shapes in our program, we can just loop
+through a collections that containing those shapes.
+```
+
+#### Summary
+
+![alt text](image/poly6.jpg)
+
+```
+- Dynamic Binding or Polymorphism is only going to work if the methods are virtual and THEY ARE SET
+UP across your Inheritance Hierarchy.
+```
+
+### Size of Polymorphism Objects and Slicing
+
+![alt text](image/poly11.jpg)
+
+```
+- With Dynamic Binding, the objects are going to be MUCH LARGER because C++ program will need to keep
+track of the information that allows it to resolve function calls dynamically and that information is 
+stored in VIRTUAL TABLES.
+```
+
+#### Slicing
+
+![alt text](image/poly8.jpg)
+
+```
+- Suppose we have the Inheritance Hierarchy like this above, and we want to do an assignment between
+the objects in this Hierarchy.
+```
+
+![alt text](image/poly9.jpg)
+
+
+```
+- If we do an assignment like this above, the compiler is going to notice that what we have in the left 
+is just a Shape and we don't have enough space to store information about Oval or Circle. So, what the 
+compiler is going to do? It's going to strip off all the things that we don't really need and it's going
+to leave in only the SHAPE part that we can assign on the left.
+```
+
+![alt text](image/poly10.jpg)
+
+```
+- And then, what we have on the right after slicing is going to be assigned on the left. So, that's what
+we're going to get in memory.
+```
+
+![alt text](image/poly12.jpg)
 
 
 
