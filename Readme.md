@@ -1491,6 +1491,47 @@ error.
 - SO, USE OVERRIDE WHEN WE HAVE TO USE VIRTUAL TO AVOID THE MISTAKE.
 ```
 
+### Overloading, Overriding and Function Hiding
+
+```
+- Pending ...
+```
+
+### Polymorphism and Inheritance in Different Levels
+
+![alt text](image/poly19.png)
+
+```
+- Polymorphism DOES NOT have to always work on the top level class.
+- Example: we can do polymorphism with Feline or Bird class, not have to do with top level class
+here (Animal).
+```
+
+#### Polymorphism with top level class
+
+![alt text](image/poly20.jpg)
+
+#### Polymorphism with derived class (Feline)
+
+![alt text](image/poly21.jpg)
+
+```
+- Example: Pigeon is not a Feline even if it's in Inheritance Hierarchy, sot putting Pigeon in 
+Feline will cause compiler error.
+- Example: Putting Animal in Feline will cause compiler error.
+- So, we can only do this behavior with derived class of Feline, not the super class of Feline.
+```
+
+#### Polymorphism with derived class (Bird)
+
+![alt text](image/poly22.jpg)
+
+### Pure Virtual Functions and Abstract Class
+
+```
+
+```
+
 # NOTE
 
 ### Translation Unit
