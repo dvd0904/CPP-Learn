@@ -1526,11 +1526,101 @@ Feline will cause compiler error.
 
 ![alt text](image/poly22.jpg)
 
+
+### Virtual Destructors
+
+```
+
+```
+
+### Dynamic Casts
+
+```
+
+```
+
+
+
+
+
+
+
+
+
 ### Pure Virtual Functions and Abstract Class
 
 ```
+- Pure virtual functions are a mechanism in C++ to mean that the method isn't meant to be implemented in the base 
+class.
+```
+
+![alt text](image/poly23.jpg)
 
 ```
+- Suppose we have an Inheritance Hierarchy like this above. Special thing here is that we don't have implementation
+for the methods in base class (Shape class). This is an abstract shape, we don't know if it's a rectangle or if it's
+a circle or if it's a triangle. So we don't really have specific information to properly compute its perimeter and
+its surface. So it makes sense to just declare these method, but leave the implementation details to inheriting class,
+because these derived classes are going to have specific information we can use to compute the perimeter and surface. 
+- So, in C++ we mean this kind of design by setting up these method as pure virtual functions and what this is going 
+to tell the compiler is these methods are not meant to be implemented in the base class, they are meant to be overridden
+and implemented by inheriting classes. Another side effect fof this is the compiler is going to prevent you from creating
+objects this class because it really does not make sense to create an object of "Shape" class, if you won't be able to
+compute its perimeter or surface so why bother creating an object that you won't really be using.
+```
+
+#### NOTE
+
+```
+- ONCE YOU SET UP AT LEAST ONE PURE VIRTUAL FUNCTION IN YOUR CLASS, YOUR CLASS IS AUTOMATICALLY GOING TO BECOME AN
+ABSTRACT CLASS.
+- If we try to create an object of the abstract class, this will cause compiler error. .But, we can still use the base 
+pointer to manage the derived object, a common set up we do with polymorphism.
+- Derived classes from an abstract class must explicitly override all the pure virtual functions from the abstract parent
+class, if you don't (you don't implement those functions), the derived classes are going to become an abstract class.
+- Pure virtual functions don't have implementation in the abstract class. They are implemented in derived classes.
+- You can't call the pure virtual functions from the constructor of the abstract class.
+- The constructor of the abstract class is used by deriving class to build up the base part of the object.
+```
+
+#### Pure Virtual functions
+
+![alt text](image/poly24.jpg)
+
+```
+- Mark a virtual function as pure virtual function by prepending an equals ZERO.
+```
+
+#### Can not create an object of abstract class
+
+![alt text](image/poly25.jpg "Can not create an object of abstract class")
+
+#### Still can use base pointer to manage derived class
+
+![alt text](image/poly26.jpg "Can use base pointer to manage derived class")
+
+#### Override all the pure virtual functions from the base class
+
+![alt text](image/poly27.jpg)
+
+
+### Abstract Classes as Interfaces
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # NOTE
 
