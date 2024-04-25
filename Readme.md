@@ -809,6 +809,13 @@ the const member function does not protect it.
 
 ![alt text](image/class51.jpg)
 
+
+### Static Member Variable
+
+```
+
+```
+
 ## 35. Namespaces
 
 ### Creating Namespaces
@@ -1243,6 +1250,37 @@ some reason, we want to use them. So how to do that?
 
 ![alt text](image/inheritance13.png)
 
+### Default Constructor with Inheritance
+
+![alt text](image/inheritance14.png)
+
+```
+- Suppose we have an Inheritance Hierarchy like this above, and we want to build an CivilEngineer class, the first
+thing to be built by C++ is Person class part of CivilEngineer class, and then it's going to build an Engineer
+level and then the CivilEngineer level. And, C++ is going to do this using constructors.
+- By default, we are going to be using default constructors.
+```
+
+![alt text](image/inheritance15.png)
+
+```
+- Suppose we set up something like this above and try to run a program, we're going to see that the Person default
+constructor are going to called first (notice that we are building CivilEngineer object).
+```
+
+#### NOTE
+
+```
+- Always provide a default constructor for your classes because the compiler may call this default constructor in
+unexpected ways, especially if they will be part of an inheritance hierarchy. For example, if somebody tries to build 
+the CivilEngineer object and you don't have a default constructor for Person, the compiler is going to try and call 
+that and it's not going to find that and it is going to throw a compiler error.
+```
+
+
+
+
+
 
 ## 41. Polymorphism
 
@@ -1545,17 +1583,62 @@ virtual, so the compiler is going to use static binding to decide what destructo
 - This is fucking bad because any piece of dynamic memory we might have allocated in the constructors
 for Feline or Dog is going to leaked out.
 - So, to solve this problem, we need to mark the Destructor of the derived class as virtual. After 
-doing that, the compiler will call the exactly destructor for derived class using dynamic binding.
+doing that, the compiler will call the exactly destructor for derived class using dynamic binding and
+the memory will be released through a base pointer.
 ```
+
+#### The order of destructor call in Inheritance Hierarchy
+
+![alt text](image/poly33.jpg)
+
+#### Before use virtual
+
+![alt text](image/poly34.jpg)
+
+#### After use virtual
+
+![alt text](image/poly35.jpg)
+
 
 
 ### Dynamic Casts
 
 ```
-
+- Dynamic casts are the facility we have in C++ to do downstream transformations between our polymorphic types, and 
+the input and output must be part of the same polymorphic inheritance hierarchy.
 ```
 
+![alt text](image/poly36.png)
 
+```
+- Suppose we have an Inheritance Hierarchy like this above. And then, we have a base pointer pointing to a Dog 
+object. Sometimes we want to transform from this base pointer to the derived object here (Dog) because the only 
+thing we can do with the base class is call the polymorphic or virtual functions. So, sometimes we want to do 
+much more than this. For example: we want to call the non polymorphic functions in the Dog object, this is not 
+going to work because the base pointer has no knowledge of those functions.
+- So, to do this thing, we need to explicitly transform from a base pointer to a derived pointer, this behavior
+well give us that capability.
+```
+
+#### When the transformation fail?
+
+![alt text](image/poly37.jpg)
+
+```
+- Be careful when using dynamic casting. The issue above is the same with REFERENCE case. 
+- The dynamic cast is working at run time, so be careful because it can be cause system crash.
+```
+
+![alt text](image/poly38.jpg)
+
+#### NOTE
+
+```
+- Transforming from base class pointer or reference to derived class pointer or reference, at run time. 
+- Makes it possible to call NON POLYMORPHIC METHODS on derived objects.
+- Overusing down casts is a sign of bad design, if you find yourself doing this a lot to call polymorphic 
+functions on derived objects, may be you should make that function polymorphic in the first place.
+```
 
 
 
