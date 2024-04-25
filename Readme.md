@@ -1530,8 +1530,24 @@ Feline will cause compiler error.
 ### Virtual Destructors
 
 ```
+- Virtual Destructors are destructor methods you might want to be called using dynamic binding or
+polymorphic behavior.
+```
+
+![alt text](image/poly32.jpg)
 
 ```
+- Suppose we have a problem like this above. We want to use a base pointer to manage all the derived
+objects with Polymorphic behavior. In this case, we are using base pointer of Animal to manage the
+Dog object. So, when it's time to release the memory for the Dog object, but the only destructor
+is called here in this case is the Destructor of Animal (base class) because the Dog Destructor is not
+virtual, so the compiler is going to use static binding to decide what destructor to call. 
+- This is fucking bad because any piece of dynamic memory we might have allocated in the constructors
+for Feline or Dog is going to leaked out.
+- So, to solve this problem, we need to mark the Destructor of the derived class as virtual. After 
+doing that, the compiler will call the exactly destructor for derived class using dynamic binding.
+```
+
 
 ### Dynamic Casts
 
@@ -1606,19 +1622,66 @@ class, if you don't (you don't implement those functions), the derived classes a
 
 ### Abstract Classes as Interfaces
 
+```
+- An Abstract Class with only pure virtual functions and no member variable can be used to model
+what is called an interface in Object Oriented Programming.
+- An Interface is a specification of something that will be fully implemented in a derived class
+but the specification itself resides in the the abstract class.
+- An interface is something you can attach to your types to give them powers of features that they
+originally didn't have.
 
+```
 
+![alt text](image/poly28.jpg)
 
+```
+- Suppose we have an Inheritance Hierarchy like this above. From this, we can attach our interface to 
+the base class (Animal). So, this is going to make all our classes in our inheritance hierarchy have 
+the features that the interface has brought to the base class.
+```
 
+#### Set up an Interface
 
+![alt text](image/poly29.jpg)
 
+```
+- Suppose we have an StreamInsertable Interface like this above. This Interface is an abstract class
+and doesn't have any member variable.
+```
 
+![alt text](image/poly30.jpg)
 
+```
+- We attach the StreamInsertable Interface with the Point class and then we can use the power that
+the Interface brought.
+- Behind the scene, the stream_insert() function in Point class is going to be picked up by the
+StreamInsertable Interface when we get call the output stream operator.
+```
 
+![alt text](image/poly31.jpg)
 
+```
+-  This behavior is that we calling the stream_insert() POLYMORPHICALLY. We are calling the 
+stream_insert method on a reference and this is dynamic binding.
+```
 
+#### Summary
 
+```
+- Again, an Interface is something that you can attach to your type in C++ and at the moment you
+attach that interface to your type, it's going to have the powers that come with that interface 
+and all you need to do in your deriving classes is to implement the virtual function that come with
+that interface and the interface will pick them up and use them to do whatever you want to do 
+Polymorphically.
+```
 
+### Summary
+
+#### What Polymorphism really means?
+```
+- Polymorphism is about using a base class pointer or reference to manage the derived objects that 
+are part of the same inheritance hierarchy.
+```
 
 
 
