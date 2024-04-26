@@ -373,8 +373,9 @@ Like pass by reference. Modifying a parameter in template function will reflect 
 ![alt text](image/class1.jpg)
 
 ```
-Members of class are public by DEFAULT -> can use "public" keyword to public members.
-If the members are private => It will not be usable outside the class, it can only be accessed inside of the class.
+- Members of class are public by DEFAULT -> can use "public" keyword to public members.
+- If the members are private => It will not be usable outside the class, it can only be accessed 
+inside of the class.
 ```
 
 ![alt text](image/class2.jpg)
@@ -382,14 +383,15 @@ If the members are private => It will not be usable outside the class, it can on
 ### C++ Constructors
 
 ```
-Constructors are special kind of method that is called when an instance of a class is created.
-No return type.
-Same name as the class.
-Can have parameters. Can also have empty parameter list.
-Usually used to initialize member variables of a class.
-It must be in the public scope of the class. If it isn't public, it can not be accessed from the outside.
-If a class don't have a constructor, compiler is going to generate an empty constructor. This empty constructor
-is going to take no parameters and it's not going to have anything in the body.
+- Constructors are special kind of method that is called when an instance of a class is created.
+- No return type.
+- Same name as the class.
+- Can have parameters. Can also have empty parameter list.
+- Usually used to initialize member variables of a class.
+- It must be in the public scope of the class. If it isn't public, it can not be accessed from the 
+outside.
+- If a class don't have a constructor, compiler is going to generate an empty constructor. This empty 
+constructor is going to take no parameters and it's not going to have anything in the body.
 ```
 
 ![alt text](image/class3.jpg)
@@ -434,9 +436,10 @@ Destructor is always have no parameters.
 
 ![alt text](image/class9.jpg)
 
+
 #### NOTE
 ```
-BE CAREFUL WHEN PASS A CLASS BY VALUE.
+BE CAREFUL WHEN PASS A CLASS BY VALUE. (PROBLEM OF CONSTRUCTOR)
 ```
 
 ### Constructor and Destructor call order
