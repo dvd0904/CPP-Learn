@@ -13,7 +13,8 @@ public:
     ~Person();
     
     //Getters
-    std::string get_full_name()const{
+    std::string get_full_name() const
+    {
         return m_full_name;
     }
     
@@ -21,7 +22,8 @@ public:
         return m_age;
     }
     
-    std::string get_address()const{
+    std::string get_address() const
+    {
         return m_address;
     }
     

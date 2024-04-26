@@ -481,9 +481,9 @@ of the struct.
 ### Size of class object
 
 ```
-The size of the class object is going to be the sum of the sizes its member variables. The functions are not
-going to be counted, they are just helper functions that live somewhere in memory but they're not going to be 
-counted in the size of object. 
+The size of the class object is going to be the sum of the sizes its member variables. The functions 
+are not going to be counted, they are just helper functions that live somewhere in memory but they're 
+not going to be counted in the size of object. 
 ```
 
 ## 31. Classes, Objects and const
@@ -491,8 +491,9 @@ counted in the size of object.
 ### Const object
 
 ```
-A const object means that its member variable can not be changed.
-There is no way to let compiler know what the setters or getters do, do they modify the value of member variable.
+- A const object means that its member variable can not be changed.
+- There is no way to let compiler know what the setters or getters do, do they modify the value of member 
+variable.
 ```
 ![alt text](image/class14.jpg)
 
@@ -590,7 +591,7 @@ to be modifying the const object => Marking these functions as const member func
 ### Default parameters for constructors
 
 ```
-Like default parameters in JS.
+- Like default parameters in JS.
 ```
 
 #### NOTE
@@ -604,6 +605,12 @@ Like default parameters in JS.
 ```
 - Initializer lists avoid unnecessary copies.
 - In some cases, they're the only way to initialize an object.
+```
+
+#### NOTE
+
+```
+- You can't initialize a member variable that doesn't belong to the class that you are trying to build.
 ```
 
 ### Initializer lists vs Member wise copy initialization
@@ -810,12 +817,36 @@ the const member function does not protect it.
 ![alt text](image/class51.jpg)
 
 
-### Static Member Variable
+### Static Member Functions
 
 ```
-
+- Static member functions that are attached to the class blueprint itself, it doesn't belong to ant class 
+object.
 ```
 
+![alt text](image/static-mem1.jpg)
+
+```
+- Static member functions can not access to the member variable of class object, but they can access to 
+the static member variable. If you need to access the member variable, pass the object class as a parameter
+to the static member functions.
+```
+
+![alt text](image/static-mem2.jpg)
+
+```
+- To access the member variable of class in static member function, we need to pass the object as parameter 
+and access the member variable through the object parameter.
+```
+
+#### NOTE
+
+```
+- STATIC MEMBER FUNCTION IS REALLY NOT TIED TO ANY OBJECT, IT'S BELONG TO THE CLASS BLUEPRINT.
+- YOU CAN NOT MASK THE STATIC MEMBER FUNCTION AS "CONST" BECAUSE A STATIC MEMBER FUNCTION DOESN'T HAVE ACCESS
+TO THE MEMBER VARIABLE AND "CONST" USE TO PREVENT THE FUNCTION FROM CHANGING THE VALUE OF MEMBER VARIABLE 
+-> IT DOES NOT MAKE SENSE TO USE "CONST".
+```
 ## 35. Namespaces
 
 ### Creating Namespaces
@@ -1277,6 +1308,11 @@ the CivilEngineer object and you don't have a default constructor for Person, th
 that and it's not going to find that and it is going to throw a compiler error.
 ```
 
+### Custom Constructor with Inheritance
+
+```
+
+```
 
 
 
