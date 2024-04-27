@@ -4,10 +4,30 @@
 #include "oval.h"
 #include "circle.h"
 
-int main(){
+int main()
+{
+    Circle circle1(7.2, "circle1");
+    Oval oval1(13.3, 1.2, "Oval1");
 
-    Shape * shape_ptr = new Circle(10,"Circle1");
-    shape_ptr->draw(45,"Red");
+    // Shape shape("hehe");
+    // shape.draw(33);
 
+    oval1.draw();
+    oval1.draw(44); 
+
+    circle1.draw();
+    circle1.draw(33);
+
+    Shape *shape_p = new Circle(10, "circle2");
+
+    shape_p->draw(33);
+
+    delete shape_p;
+    
     return 0;
 }
+
+
+
+
+

@@ -2,6 +2,7 @@
 #define OVAL_H
 #include <string_view>
 #include "shape.h"
+
 class Oval : public Shape
 {
 public:
@@ -18,10 +19,11 @@ public:
                     << std::endl;
     }
 
-    virtual void draw(int color_depth, std::string_view color) const{
-		std::cout << "Drawing with color depth : " << color_depth 
-		<< " and color : " << color << std::endl;
+    virtual void draw(int color_depth) const override
+    {
+		std::cout << "Oval::Drawing with color depth : " << color_depth << std::endl;
 	}
+
 
 public:
     double get_x_rad() const{

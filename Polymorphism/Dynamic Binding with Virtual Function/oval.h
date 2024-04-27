@@ -17,11 +17,13 @@ public:
     }
 
 public:
-    double get_x_rad() const{
+    virtual double get_x_rad() const
+    {
         return m_x_radius;
     }
     
-    double get_y_rad() const{
+    double get_y_rad() const
+    {
         return m_y_radius;
     }
  

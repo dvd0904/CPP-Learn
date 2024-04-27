@@ -399,7 +399,10 @@ constructor is going to take no parameters and it's not going to have anything i
 ### Default constructor
 
 ```
-
+- If we mark the constructor as default, the compiler is going to generate the empty constructor.
+- The moment we set up your own constructor, the compiler is going to NOT generate the default 
+constructor. And if you want to keep the ability to construct objects without passing parameters, 
+you're going to have to put in your own default constructor by mark it as "default" keyword.
 ```
 
 ### Setters and Getters
@@ -610,7 +613,7 @@ to be modifying the const object => Marking these functions as const member func
 - In some cases, they're the only way to initialize an object.
 ```
 
-#### NOTE
+
 
 ```
 - You can't initialize a member variable that doesn't belong to the class that you are trying to build.
@@ -639,9 +642,73 @@ from the same class.
 
 ### Copy constructors
 
-![alt text](image/class33.jpg)
+<!-- ![alt text](image/class33.jpg) -->
 
-#### NOTE
+```
+- Copy constructors are called by the compiler to make copies if we try to construct a class object from another class
+object from another class object.
+- If we want to copy to an object from another object, this behavior is going to copy the member variables one by one.
+```
+
+![alt text](image/copy-con2.jpg)
+
+```
+- Suppose we make a copy from p1 to p2. So, what is going to do here is do a member wise copy. So, it's going to take
+the last_name from p1 and copy that to p2, first_name is the same. And then, it's going to copy the age from p1 to p2, 
+but the age variable here is a pointer, so what is copy here the address that store in "age" pointer. But by copying a
+pointer like this can give us problems. 
+- The problem is if we try to set new value for the age variable at p1, the age at p2 is going to be changed. -> that's
+not good. So, what the compiler is doing here is calling a default copy constructor to copy the member variables one by 
+one.
+- So, to solve the problem, we need to set up our own copy constructor and then customize it however we want. This will 
+disable the default one provided by the compiler.
+```
+
+#### Case 1: use const object
+
+![alt text](image/copy-con3.jpg)
+
+```
+- In this case, we are using the const object as constructor parameter because we don't want to modify anything.
+Here, we are basically copying member wise, this is the same thing that the compiler do by default. But we have
+another problem, PASSING OBJECT BY VALUE into a constructor is not allowed by the compiler BECAUSE THIS COULD
+LEAD AN ENDLESS COPY CONSTRUCTOR CALL. WHy?
+- Example: Person p2(p1);
+- With this example, we are copying from p1 to p2. So, when the compiler see this behavior, it will know that it
+need to call a copy constructor. And when it calls a copy constructor, but the p1 object here is "PASS BY VALUE",
+and we know that when we pass something by value, the compiler will copy a new object from the argument p1 and 
+when a copying is fired, the compiler continue call the copy constructor and so on.
+-> This will cause an endless copy constructor call -> C++ doesn't allow us to do that.
+```
+
+#### Case 2: use const reference
+
+![alt text](image/copy-con4.jpg)
+
+```
+- In this case, we are passing by const reference. So, with const reference, we are avoiding copy -> we solve the
+problem that call an endless copy constructor.
+- But we still have a problem left in this case, we are doing a member wise copy and we are blindly copying the age
+member variable whereas it's a pointer. So, this is the same with what the compiler do by default. 
+-> This's not good.
+```
+
+#### Case 3: solve problem in case 1 and 2
+
+![alt text](image/copy-con5.jpg)
+
+```
+- In this case, we still use a const reference to avoid copy -> this solve the problem that calls endless copy constructor.
+- To solve the problem that blindly copies the pointer, we need to allocate new memory address and then copy that to the
+age pointer. So, by this behavior, the address of age variable in source object and destination object is different \
+-> we solve blindly copying problem. 
+```
+
+#### Case 4: use Constructor Delegation
+
+![alt text](image/copy-con6.jpg)
+
+<!-- #### NOTE
 
 ![alt text](image/class34.jpg)
 
@@ -656,7 +723,7 @@ constructor call.
 
 #### Solve problem
 
-![alt text](image/class36.jpg)
+![alt text](image/class36.jpg) -->
 
 
 ### Objects stored in arrays are copies
@@ -686,8 +753,52 @@ constructor call.
 ### Move constructors
 
 ```
-- Move constructor is a special kind of constructor whose job is steal data from temporary object.
+- Move constructor is a special kind of constructor whose job is steal data from temporary objects that are going to
+be killed by the compiler anyway.
+- We steal data from temporaries, avoiding unnecessary copies, since the data in the temporary is going to be thrown 
+away anyway.
 ```
+
+#### Build from temporaries: syntax
+
+![alt text](image/movecon1.jpg)
+
+```
+- This syntax above is used for build an object from temporaries. This behavior would really use the copy constructor.
+So the constructor is going to be called from what we have in the parentheses and we're going to build a temporary 
+point object whose sole purpose is to be used to build another point object. So the Point object in the parentheses 
+here is not waste the data because we just make an example here. We just want to grab the data and we don't want to
+go through the trouble to build another point because we are already have it as temporary here and we just want to
+steal data from it.
+```
+
+![alt text](image/movecon2.jpg)
+
+```
+- Suppose we have a temporary object like this above, it lives somewhere in memory and it's going to be used to build
+a Point object. And, suppose that what we are pointing to is very large, it's a really heavy object and we don't want
+to waste the data. But it's going to be wasted because the moment we are done building from a temporary, the temporary
+is going to be thrown away by the compiler and we don't want to really waste. So what we can do is steal data from this 
+temporary if we are building another object from it.
+```
+
+![alt text](image/movecon3.jpg)
+
+```
+- After stealing data from the temporary, we can make the pointers in temporary to nowhere. So, by stealing data like 
+this we have avoided the heavy work of setting up our own data in "p3" object here. After stealing the data, the 
+pointers in "p3" and the temporary is going to be the same. But to really completely steal the data, we're going to 
+reset the pointers in temporary and we're going set them to null pointer.
+```
+![alt text](image/movecon4.jpg)
+
+```
+- So in temporary we're going to have a null pointer and it's basically not going to be pointing anywhere. The temporary 
+object is not going to have any content in here and the data will have moved in "p3" and this is what we mean by stealing
+data.
+```
+
+#### Implementation
 
 ![alt text](image/class42.jpg)
 
@@ -721,9 +832,12 @@ Move constructor called
 
 ### Deleted Constructors
 
-```
+![alt text](image/delete-constructor.jpg)
 
 ```
+- Disable some constructors and prevent them from being used to build objects (use delete keyword).
+```
+
 
 ### Initializer list constructors
 
@@ -1318,7 +1432,16 @@ that and it's not going to find that and it is going to throw a compiler error.
 ```
 
 
+### Summary
 
+```
+- Inheritance is a feature in C++ to allow us to build complete class hierarchies and have classed that depend on each 
+other.
+- A defining feature of Object Oriented Programming in C++.
+- Building types on top of other types.
+- Inheritance hierarchies can be set up to suit your needs.
+- Code reuse is improved.
+```
 
 
 ## 41. Polymorphism
@@ -1570,9 +1693,25 @@ error.
 
 ### Overloading, Overriding and Function Hiding
 
+![alt text](image/poly39.png)
+
 ```
-- Pending ...
+- Suppose we have an Inheritance Hierarchy like this (Shape <- Oval <- Circle). In Shape class, we set up 
+two virtual function like this above. And then we call the draw() and draw(param) method like this below, 
+but the draw(param) cause compiler error. Why?
 ```
+
+![alt text](image/poly40.png)
+
+```
+- This draw(param) cause compiler error because it is going to hide all the other overloads we had for the 
+draw. And the draw() that taking no parameter is the only overload function that is going to be available in
+downstream classes. So, to make all the other overloads can work in the downstream classes, we need to 
+implement all the overloads in the downstream classes. In this case, we need to implement the draw(param) 
+in both of Oval and Circle class.
+```
+
+![alt text](image/poly41.png)
 
 ### Polymorphism and Inheritance in Different Levels
 
@@ -1602,6 +1741,46 @@ Feline will cause compiler error.
 #### Polymorphism with derived class (Bird)
 
 ![alt text](image/poly22.jpg)
+
+
+### Inheritance and Polymorphism with Static Members
+
+```
+- Suppose we have an Inheritance Hierarchy like this: class Shape <- class Ellipse.
+- In Shape class, we have some constructors and destructor but this's really important here is a static member 
+variable, Shape class have a static member variable that is used to count the instance of Shape class.
+- In Ellipse class, we have the same with Shape class but it doesn't have a static member variable.
+```
+
+#### Problem
+
+![alt text](image/poly42.jpg)
+
+```
+- After setting up Shape class and Ellipse class, we set up a piece of code like this above. In here, we have 3 shapes
+and 1 ellipse. So, the total shape is 4 because ellipse is just a shape. But, we actually have just one ellipse and
+why the output said that we have 4? So the problem here is that the static variable we are using in shape and ellipse 
+are the same because the one we have in ellipse was inherited from shape.
+```
+
+#### Solve the problem
+
+```
+- To solve this problem, we need to set up another static variable named exactly the same at the Ellipse class.
+```
+
+![alt text](image/poly43.jpg)
+
+```
+- So, after doing that way, the result is really what we expect. This is working because Ellipse is going to maintain 
+its own static variable.
+```
+
+### Final 
+
+```
+
+```
 
 
 ### Virtual Destructors
@@ -1804,6 +1983,7 @@ Polymorphically.
 - Polymorphism is about using a base class pointer or reference to manage the derived objects that 
 are part of the same inheritance hierarchy.
 ```
+
 
 
 
