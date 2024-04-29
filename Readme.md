@@ -1779,7 +1779,23 @@ its own static variable.
 ### Final 
 
 ```
+- Restrict how you override methods in derived classes.
+- Restrict how you can derived from a base class.
+```
 
+![alt text](image/poly44.jpg)
+
+```
+- Suppose we set up a Dog class like this above, in Dog class, we have a run() method that
+is mark as "final" keyword -> the derived class of Dog can not override this run() method,
+Dog class forced all its sub class must to use the run() method implementation by Dog class.
+```
+
+![alt text](image/poly45.jpg)
+
+```
+- Suppose we have a Cat class like this above, it's mark by "final" keyword, so there is no
+other class can be inherited from Cat class.
 ```
 
 
